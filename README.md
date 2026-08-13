@@ -44,7 +44,7 @@
 环境要求：Node.js `>=22.13.0` 和 npm。
 
 ```bash
-git clone https://github.com/GreatAndyC/bim-review-agent.git
+git clone https://github.com/GreatAndyC/bim-review-agent-public.git
 cd bim-review-agent/apps/gpt-sites
 npm ci
 npm run dev

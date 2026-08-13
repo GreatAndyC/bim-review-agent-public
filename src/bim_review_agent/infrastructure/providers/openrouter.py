@@ -419,7 +419,7 @@ class OpenRouterChatProvider:
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json",
             "User-Agent": "bim-review-agent/0.1",
-            "HTTP-Referer": "https://github.com/GreatAndyC/bim-review-agent",
+            "HTTP-Referer": "https://github.com/GreatAndyC/bim-review-agent-public",
             "X-OpenRouter-Title": "BIM Review Agent",
         }
         response = self._transport(

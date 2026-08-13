@@ -44,7 +44,7 @@ There are two runnable surfaces. The Site-native app is the primary product UI; 
 Prerequisites: Node.js `>=22.13.0` and npm.
 
 ```bash
-git clone https://github.com/GreatAndyC/bim-review-agent.git
+git clone https://github.com/GreatAndyC/bim-review-agent-public.git
 cd bim-review-agent/apps/gpt-sites
 npm ci
 npm run dev
