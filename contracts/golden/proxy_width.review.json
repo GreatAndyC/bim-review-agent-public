@@ -1,0 +1,335 @@
+{
+  "findings": [
+    {
+      "applicability": "Confirmed exit door; width evidence is insufficient for comparison.",
+      "category": "Egress",
+      "entity": {
+        "global_id": "1W5nlWz0jSwx82iydEKbRX",
+        "ifc_class": "IfcDoor",
+        "name": "East Exit D-05",
+        "object_type": "Single swing fire exit",
+        "storey": "Level 01",
+        "tag": "D-05"
+      },
+      "explanation": {
+        "boundary": "This explanation restates deterministic evidence. It does not change the finding, certify compliance, or replace professional review.",
+        "next_step": "Measure or export the actual clear opening to Pset_BIMReview.ClearWidth; keep the nominal OverallWidth as supporting evidence only.",
+        "summary": "East Exit D-05 only reports OverallWidth, which is a proxy for clear opening.",
+        "why_it_matters": "The model evidence is missing, ambiguous, contradictory, or only a proxy, so a defensible pass/fail decision would overstate certainty."
+      },
+      "finding_id": "egress-001-b6726d5d1f6c",
+      "message": "East Exit D-05 only reports OverallWidth, which is a proxy for clear opening.",
+      "model_evidence": {
+        "applicability_signal": {
+          "label": "Exit classification",
+          "normalized_value": true,
+          "note": null,
+          "raw_value": true,
+          "reliability": "EXPLICIT",
+          "source_path": "Pset_DoorCommon.FireExit",
+          "unit": null
+        },
+        "observations": [
+          {
+            "label": "Nominal overall width (proxy)",
+            "normalized_value": 950.0,
+            "note": "OverallWidth is a nominal door width and is not silently treated as clear opening.",
+            "raw_value": 950.0,
+            "reliability": "PROXY",
+            "source_path": "IfcDoor.OverallWidth",
+            "unit": "mm"
+          }
+        ]
+      },
+      "recommendation": "Measure or export the actual clear opening to Pset_BIMReview.ClearWidth; keep the nominal OverallWidth as supporting evidence only.",
+      "rule_evidence": {
+        "authority": "DEMO_PROJECT_RULE",
+        "clause": null,
+        "jurisdiction": "Demonstration only — not jurisdiction-specific",
+        "limitation": "This configuration demonstrates review mechanics and engineering judgment. It is not an approved Hong Kong statutory clause and cannot certify compliance.",
+        "parameters": {
+          "contradiction_tolerance_mm": 5.0,
+          "minimum": 900.0,
+          "operator": ">=",
+          "proxy_policy": "review",
+          "unit": "mm"
+        },
+        "rule_id": "EGRESS-001",
+        "source_title": "BIM Review Agent demonstration requirements",
+        "title": "Exit door clear width",
+        "version": "1.0.0"
+      },
+      "rule_id": "EGRESS-001",
+      "rule_title": "Exit door clear width",
+      "severity": "WARNING",
+      "status": "REVIEW"
+    },
+    {
+      "applicability": "Applies to every IfcDoor so the review can establish whether exit rules apply.",
+      "category": "Information quality",
+      "entity": {
+        "global_id": "1W5nlWz0jSwx82iydEKbRX",
+        "ifc_class": "IfcDoor",
+        "name": "East Exit D-05",
+        "object_type": "Single swing fire exit",
+        "storey": "Level 01",
+        "tag": "D-05"
+      },
+      "explanation": {
+        "boundary": "This explanation restates deterministic evidence. It does not change the finding, certify compliance, or replace professional review.",
+        "next_step": "No action is required for this classification field.",
+        "summary": "East Exit D-05 is explicitly classified as an exit door.",
+        "why_it_matters": "The available explicit evidence satisfies this configured project rule for the specific element checked."
+      },
+      "finding_id": "info-001-103cfd41c0af",
+      "message": "East Exit D-05 is explicitly classified as an exit door.",
+      "model_evidence": {
+        "applicability_signal": null,
+        "observations": [
+          {
+            "label": "Exit classification",
+            "normalized_value": true,
+            "note": null,
+            "raw_value": true,
+            "reliability": "EXPLICIT",
+            "source_path": "Pset_DoorCommon.FireExit",
+            "unit": null
+          }
+        ]
+      },
+      "recommendation": "No action is required for this classification field.",
+      "rule_evidence": {
+        "authority": "DEMO_PROJECT_RULE",
+        "clause": null,
+        "jurisdiction": "Demonstration only — not jurisdiction-specific",
+        "limitation": "This configuration demonstrates review mechanics and engineering judgment. It is not an approved Hong Kong statutory clause and cannot certify compliance.",
+        "parameters": {
+          "applicability": "all_doors",
+          "missing_outcome": "REVIEW",
+          "required_field": "Pset_DoorCommon.FireExit",
+          "requirement_key": "exit-classification"
+        },
+        "rule_id": "INFO-001",
+        "source_title": "BIM Review Agent demonstration requirements",
+        "title": "Door information evidence",
+        "version": "1.0.0"
+      },
+      "rule_id": "INFO-001",
+      "rule_title": "Door information evidence",
+      "severity": "INFO",
+      "status": "PASS"
+    },
+    {
+      "applicability": "Applies to every IfcDoor in the demo project rule pack.",
+      "category": "Information quality",
+      "entity": {
+        "global_id": "1W5nlWz0jSwx82iydEKbRX",
+        "ifc_class": "IfcDoor",
+        "name": "East Exit D-05",
+        "object_type": "Single swing fire exit",
+        "storey": "Level 01",
+        "tag": "D-05"
+      },
+      "explanation": {
+        "boundary": "This explanation restates deterministic evidence. It does not change the finding, certify compliance, or replace professional review.",
+        "next_step": "No action is required for this configured information field.",
+        "summary": "Door name is present for East Exit D-05.",
+        "why_it_matters": "The available explicit evidence satisfies this configured project rule for the specific element checked."
+      },
+      "finding_id": "info-001-5f33b7e9bea0",
+      "message": "Door name is present for East Exit D-05.",
+      "model_evidence": {
+        "applicability_signal": null,
+        "observations": [
+          {
+            "label": "Door name",
+            "normalized_value": "East Exit D-05",
+            "note": null,
+            "raw_value": "East Exit D-05",
+            "reliability": "EXPLICIT",
+            "source_path": "IfcDoor.Name",
+            "unit": null
+          }
+        ]
+      },
+      "recommendation": "No action is required for this configured information field.",
+      "rule_evidence": {
+        "authority": "DEMO_PROJECT_RULE",
+        "clause": null,
+        "jurisdiction": "Demonstration only — not jurisdiction-specific",
+        "limitation": "This configuration demonstrates review mechanics and engineering judgment. It is not an approved Hong Kong statutory clause and cannot certify compliance.",
+        "parameters": {
+          "applicability": "all_doors",
+          "missing_outcome": "REVIEW",
+          "required_field": "IfcDoor.Name",
+          "requirement_key": "door-name"
+        },
+        "rule_id": "INFO-001",
+        "source_title": "BIM Review Agent demonstration requirements",
+        "title": "Door information evidence",
+        "version": "1.0.0"
+      },
+      "rule_id": "INFO-001",
+      "rule_title": "Door information evidence",
+      "severity": "INFO",
+      "status": "PASS"
+    },
+    {
+      "applicability": "Confirmed exit door via explicit model property.",
+      "category": "Information quality",
+      "entity": {
+        "global_id": "1W5nlWz0jSwx82iydEKbRX",
+        "ifc_class": "IfcDoor",
+        "name": "East Exit D-05",
+        "object_type": "Single swing fire exit",
+        "storey": "Level 01",
+        "tag": "D-05"
+      },
+      "explanation": {
+        "boundary": "This explanation restates deterministic evidence. It does not change the finding, certify compliance, or replace professional review.",
+        "next_step": "No action is required for this configured information field.",
+        "summary": "Exit door fire rating is present for East Exit D-05.",
+        "why_it_matters": "The available explicit evidence satisfies this configured project rule for the specific element checked."
+      },
+      "finding_id": "info-001-edb1c14ea3a0",
+      "message": "Exit door fire rating is present for East Exit D-05.",
+      "model_evidence": {
+        "applicability_signal": {
+          "label": "Exit classification",
+          "normalized_value": true,
+          "note": null,
+          "raw_value": true,
+          "reliability": "EXPLICIT",
+          "source_path": "Pset_DoorCommon.FireExit",
+          "unit": null
+        },
+        "observations": [
+          {
+            "label": "Exit door fire rating",
+            "normalized_value": "60min",
+            "note": null,
+            "raw_value": "60min",
+            "reliability": "EXPLICIT",
+            "source_path": "Pset_DoorCommon.FireRating",
+            "unit": null
+          }
+        ]
+      },
+      "recommendation": "No action is required for this configured information field.",
+      "rule_evidence": {
+        "authority": "DEMO_PROJECT_RULE",
+        "clause": null,
+        "jurisdiction": "Demonstration only — not jurisdiction-specific",
+        "limitation": "This configuration demonstrates review mechanics and engineering judgment. It is not an approved Hong Kong statutory clause and cannot certify compliance.",
+        "parameters": {
+          "applicability": "confirmed_exit_doors",
+          "missing_outcome": "REVIEW",
+          "required_field": "Pset_DoorCommon.FireRating",
+          "requirement_key": "exit-fire-rating"
+        },
+        "rule_id": "INFO-001",
+        "source_title": "BIM Review Agent demonstration requirements",
+        "title": "Door information evidence",
+        "version": "1.0.0"
+      },
+      "rule_id": "INFO-001",
+      "rule_title": "Door information evidence",
+      "severity": "INFO",
+      "status": "PASS"
+    }
+  ],
+  "inventory": {
+    "entity_counts": {
+      "IfcBeam": 0,
+      "IfcBuilding": 1,
+      "IfcBuildingStorey": 1,
+      "IfcDoor": 1,
+      "IfcProject": 1,
+      "IfcSite": 1,
+      "IfcSlab": 0,
+      "IfcSpace": 0,
+      "IfcWall": 0
+    },
+    "length_to_metre_scale": 0.001,
+    "length_unit": "mm",
+    "length_unit_known": true,
+    "schema_name": "IFC4",
+    "total_entities": 20
+  },
+  "rule_pack_id": "hku-demo-2026",
+  "rule_pack_version": "1.0.0",
+  "source": {
+    "filename": "proxy_width.ifc",
+    "sha256": "19d52eadd315bf5ed82ade501cc4031209c6f53ba850569a1bb07b3750b95f34",
+    "size_bytes": 1706
+  },
+  "summary": {
+    "fail_count": 0,
+    "pass_count": 3,
+    "review_count": 1,
+    "reviewed_entities": 1,
+    "total_findings": 4
+  },
+  "trace": [
+    {
+      "data": {
+        "sha256_prefix": "19d52eadd315",
+        "size_bytes": 1706
+      },
+      "detail": "Extension, size, STEP header, and schema declaration accepted.",
+      "key": "validate",
+      "label": "Validate input",
+      "order": 1,
+      "status": "COMPLETED"
+    },
+    {
+      "data": {
+        "door_count": 1,
+        "length_unit": "mm",
+        "schema": "IFC4"
+      },
+      "detail": "Read 20 IFC records and 1 door elements.",
+      "key": "inventory",
+      "label": "Inventory model",
+      "order": 2,
+      "status": "COMPLETED"
+    },
+    {
+      "data": {
+        "enabled_rules": [
+          "INFO-001",
+          "EGRESS-001"
+        ],
+        "rule_pack_version": "1.0.0"
+      },
+      "detail": "Planned 2 deterministic rules from hku-demo-2026.",
+      "key": "plan",
+      "label": "Plan checks",
+      "order": 3,
+      "status": "COMPLETED"
+    },
+    {
+      "data": {
+        "fail": 0,
+        "pass": 3,
+        "review": 1
+      },
+      "detail": "Produced 4 findings using deterministic rule code.",
+      "key": "execute",
+      "label": "Execute rules",
+      "order": 4,
+      "status": "COMPLETED"
+    },
+    {
+      "data": {
+        "external_ai_calls": 0,
+        "report_contract": "ReviewRun/v1"
+      },
+      "detail": "Bound model evidence, rule evidence, and deterministic explanations.",
+      "key": "report",
+      "label": "Assemble evidence",
+      "order": 5,
+      "status": "COMPLETED"
+    }
+  ]
+}

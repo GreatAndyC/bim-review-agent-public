@@ -1,0 +1,75 @@
+{
+  "agent_contract": "AgentRun/v1",
+  "contract_version": "1.0.0",
+  "reference_runtime": "python-ifcopenshell",
+  "review_contract": "ReviewRun/v1",
+  "rule_pack_id": "hku-demo-2026",
+  "rule_pack_version": "1.0.0",
+  "samples": [
+    {
+      "filename": "clean.ifc",
+      "golden_path": "golden/clean.review.json",
+      "id": "clean",
+      "source_sha256": "d0edf5180f78c71e763910cc350646390e2e2d261fb9ffaf0caf6f199fd4d3cc",
+      "summary": {
+        "fail_count": 0,
+        "pass_count": 6,
+        "review_count": 0,
+        "reviewed_entities": 2,
+        "total_findings": 6
+      }
+    },
+    {
+      "filename": "missing_information.ifc",
+      "golden_path": "golden/missing_information.review.json",
+      "id": "missing_information",
+      "source_sha256": "e6588d1aa25e67fa9f52f4fe727e39c342b9b4b54ae595eb67bf479046d9191d",
+      "summary": {
+        "fail_count": 0,
+        "pass_count": 2,
+        "review_count": 2,
+        "reviewed_entities": 1,
+        "total_findings": 4
+      }
+    },
+    {
+      "filename": "mixed_review.ifc",
+      "golden_path": "golden/mixed_review.review.json",
+      "id": "mixed_review",
+      "source_sha256": "c3cf1c5cd97a560f88cef668862416d03dc5eaa47d64ca2f005c46f1372e1438",
+      "summary": {
+        "fail_count": 1,
+        "pass_count": 8,
+        "review_count": 4,
+        "reviewed_entities": 4,
+        "total_findings": 13
+      }
+    },
+    {
+      "filename": "narrow_exit.ifc",
+      "golden_path": "golden/narrow_exit.review.json",
+      "id": "narrow_exit",
+      "source_sha256": "f9e9211a3072b018ee57e8326883c6a4548b2be26247ea6cf4b9fe736835a288",
+      "summary": {
+        "fail_count": 1,
+        "pass_count": 3,
+        "review_count": 0,
+        "reviewed_entities": 1,
+        "total_findings": 4
+      }
+    },
+    {
+      "filename": "proxy_width.ifc",
+      "golden_path": "golden/proxy_width.review.json",
+      "id": "proxy_width",
+      "source_sha256": "19d52eadd315bf5ed82ade501cc4031209c6f53ba850569a1bb07b3750b95f34",
+      "summary": {
+        "fail_count": 0,
+        "pass_count": 3,
+        "review_count": 1,
+        "reviewed_entities": 1,
+        "total_findings": 4
+      }
+    }
+  ]
+}

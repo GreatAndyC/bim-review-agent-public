@@ -1,0 +1,50 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "bim-review-agent"
+version = "0.1.0"
+description = "Evidence-first IFC review agent with deterministic rules and auditable findings"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.11,<3.15"
+dependencies = [
+  "ifcopenshell==0.8.5",
+  "pydantic>=2.11,<3",
+  "pyyaml>=6.0,<7",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.4,<10",
+  "pytest-cov>=6,<8",
+  "ruff>=0.12,<1",
+]
+
+[project.scripts]
+bim-review-agent = "bim_review_agent.interfaces.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/bim_review_agent"]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["bim_review_agent"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["src", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+ignore = ["E501"]

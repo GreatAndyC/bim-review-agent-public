@@ -1,0 +1,227 @@
+<template>
+  <style>
+
+    #root {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      container-type: size;
+      isolation: isolate;
+      color: #0f172a;
+      font-family: system-ui, sans-serif;
+    }
+    #root, #root * { box-sizing: border-box; }
+    .real-ui-ground {
+      position: absolute;
+      inset: 0;
+      background: #f7f9fc;
+      background-image:
+        linear-gradient(rgba(29, 78, 216, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(29, 78, 216, 0.07) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .real-ui-hairline {
+      position: absolute;
+      left: 64px;
+      right: 64px;
+      height: 2px;
+      background: #0f172a;
+      z-index: 8;
+    }
+    .real-ui-hairline.top { top: 64px; }
+    .real-ui-hairline.bottom { top: 945px; }
+    .real-ui-header {
+      position: absolute;
+      top: 28px;
+      left: 68px;
+      right: 68px;
+      z-index: 9;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #334155;
+      font-family: ui-monospace, monospace;
+      font-size: 15px;
+      line-height: 1;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .real-ui-screen {
+      position: absolute;
+      left: 62px;
+      top: 145px;
+      width: 1048px;
+      height: 720px;
+      z-index: 2;
+      overflow: hidden;
+      background: #ffffff;
+      border: 2px solid #9aaabd;
+      opacity: 0;
+      transform: translateX(-26px);
+      will-change: transform, opacity;
+    }
+    .real-ui-screen img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      background: #ffffff;
+    }
+    .real-ui-screen::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+    }
+    .real-ui-copy {
+      position: absolute;
+      left: 1190px;
+      top: 154px;
+      width: 650px;
+      min-height: 700px;
+      z-index: 3;
+      padding-left: 34px;
+      border-left: 2px solid #1d4ed8;
+      opacity: 0;
+      transform: translateX(28px);
+      will-change: transform, opacity;
+    }
+    .real-ui-chapter {
+      color: #1d4ed8;
+      font-family: ui-monospace, monospace;
+      font-size: 16px;
+      line-height: 1.2;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .real-ui-copy h1 {
+      margin: 32px 0 20px;
+      max-width: 620px;
+      color: #0f172a;
+      font-size: 54px;
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+    }
+    .real-ui-lede {
+      max-width: 560px;
+      color: #334155;
+      font-size: 25px;
+      line-height: 1.48;
+    }
+    .real-ui-facts {
+      margin-top: 38px;
+      max-width: 600px;
+      border-top: 2px solid #0f172a;
+    }
+    .real-ui-fact {
+      position: relative;
+      padding: 18px 0 17px 24px;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.24);
+      color: #0f172a;
+      font-family: ui-monospace, monospace;
+      font-size: 20px;
+      line-height: 1.3;
+      letter-spacing: -0.015em;
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    .real-ui-fact::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: #1d4ed8;
+    }
+    .real-ui-takeaway {
+      margin-top: 44px;
+      max-width: 600px;
+      padding-top: 18px;
+      border-top: 2px solid #0f172a;
+      color: #1d4ed8;
+      font-family: ui-monospace, monospace;
+      font-size: 21px;
+      line-height: 1.35;
+      letter-spacing: 0.02em;
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    .real-ui-footer {
+      position: absolute;
+      left: 68px;
+      bottom: 84px;
+      z-index: 9;
+      color: #64748b;
+      font-family: ui-monospace, monospace;
+      font-size: 14px;
+      line-height: 1;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+  </style>
+  <div id="root" data-composition-id="10-engineering-close" data-width="1920" data-height="1080" data-duration="13">
+  <div class="real-ui-ground"></div>
+  <div class="real-ui-hairline top"></div>
+  <div class="real-ui-hairline bottom"></div>
+  <div class="real-ui-header">
+    <span>BIM REVIEW AGENT · REAL UI WALKTHROUGH</span>
+    <span>10 / 11 · 批量导出</span>
+  </div>
+  <div class="real-ui-screen" id="screen-10-history">
+    <img src="assets/flow-15-batch-summary.png" alt="" />
+  </div>
+  <aside class="real-ui-copy" id="copy-10-history">
+    <div class="real-ui-chapter">10 / 11 · 批量导出</div>
+    <h1>勾选后一次导出</h1>
+    <div class="real-ui-lede">批量摘要和其他工作区入口都在这里。</div>
+    <div class="real-ui-facts">
+        <div class="real-ui-fact">2 个文件 / 25 条发现</div>
+        <div class="real-ui-fact">导出所选 PDF</div>
+    </div>
+    <div class="real-ui-takeaway">规则配置 · 样例 · 历史记录</div>
+  </aside>
+  <script>
+    (function () {
+      var root = document.querySelector("#root");
+      if (!root) return;
+      var timeline = gsap.timeline({ paused: true });
+      var screen = root.querySelector("#screen-10-history");
+      var copy = root.querySelector("#copy-10-history");
+      var facts = Array.from(root.querySelectorAll(".real-ui-fact"));
+      var takeaway = root.querySelector(".real-ui-takeaway");
+      timeline.fromTo(
+        screen,
+        { opacity: 0, x: -26 },
+        { opacity: 1, x: 0, duration: 0.72, ease: "power3.out" },
+        0,
+      );
+      timeline.fromTo(
+        copy,
+        { opacity: 0, x: 28 },
+        { opacity: 1, x: 0, duration: 0.72, ease: "power3.out" },
+        0.16,
+      );
+      facts.forEach(function (item, index) {
+        timeline.fromTo(
+          item,
+          { opacity: 0, y: 14 },
+          { opacity: 1, y: 0, duration: 0.34, ease: "power2.out" },
+          0.68 + index * 0.14,
+        );
+      });
+      timeline.fromTo(
+        takeaway,
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.42, ease: "power2.out" },
+        1.08,
+      );
+      timeline.to(root, { duration: Math.max(0.1, 13 - 1.8) }, 1.8);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["10-engineering-close"] = timeline;
+    })();
+  </script>
+  </div>
+</template>

@@ -1,0 +1,74 @@
+# macOS and editor state
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+.~*
+~$*
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+.venv/
+dist/
+build/
+!apps/gpt-sites/build/
+!apps/gpt-sites/build/sites-vite-plugin.ts
+*.egg-info/
+node_modules/
+*.log
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+.netrc
+.npmrc
+.pypirc
+.mcp.json
+.mcp/
+credentials.json
+service-account*.json
+**/Cookies
+**/Login Data
+
+# Runtime data
+.bim-review-agent/
+data/uploads/
+data/runs/
+reports/generated/
+local-delivery/
+
+# HyperFrames state, media preferences, capture intermediates, and renders are
+# local/generated. The reproducible authored source and reviewed top-level
+# assets remain outside these directories and can be committed deliberately.
+videos/**/.hyperframes/
+videos/**/.media/
+videos/**/capture/
+videos/**/renders/
+videos/**/snapshots/
+videos/bim-review-agent-promo/assets/audio/minimax/
+
+# Local video brief and orchestration metadata are not render dependencies and
+# are excluded from the redacted submission bundle.
+videos/bim-review-agent-promo/BRIEF.md
+videos/bim-review-agent-promo/audio_engine_meta.json
+videos/bim-review-agent-promo/audio_request.json
+videos/bim-review-agent-promo/caption-overrides.json
+videos/bim-review-agent-promo/meta.json
+
+# Local source archive. Its maintained Markdown replacement lives under docs/.
+BIM_Review_Agent_项目定义与实施方案_v0.1.docx
+docs/source/private/

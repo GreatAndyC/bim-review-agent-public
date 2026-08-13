@@ -1,0 +1,58 @@
+id: cn-fire-55037-2022
+version: 1.0.0
+title: GB 55037-2022 Mainland China fire-safety baseline
+
+authority:
+  type: AUTHORITATIVE_STANDARD
+  source_title: GB 55037-2022《建筑防火通用规范》
+  jurisdiction: Chinese Mainland
+  clause: 7.1.4(1)
+  limitation: >-
+    This is the first executable product slice for GB 55037-2022. It checks only an explicitly
+    classified IfcDoor against the verified clear-opening minimum in Clause 7.1.4(1). It is a
+    deterministic pre-check and evidence report, not statutory certification or professional
+    sign-off. Door swing direction, building use, occupant load, floor or underground depth,
+    number of exits, total egress width, and geometry-derived applicability are not inferred.
+  source_url: https://www.gov.cn/zhengce/zhengceku/2023-01/30/5739161/files/b1fb02d581bd4c2c866b488ea730c652.pdf
+  source_landing_page: https://www.ndls.org.cn/standard/detail/b8a04ed863a255a534225f811d7a7410
+  source_edition: 2022 · effective 2023-06-01
+  source_retrieved_on: "2026-08-12"
+
+info:
+  id: INFO-001
+  title: Required evidence for mainland exit-door pre-check
+  category: Mainland China fire safety / information quality
+  version: 1.0.0
+  enabled: true
+  requirements:
+    - key: door-name
+      label: Door name
+      field: name
+      applicability: all_doors
+      source_path: IfcDoor.Name
+      missing_status: REVIEW
+    - key: exit-classification
+      label: Exit classification
+      field: fire_exit
+      applicability: all_doors
+      source_path: Pset_DoorCommon.FireExit
+      missing_status: REVIEW
+    - key: clear-width
+      label: Verified clear opening width
+      field: clear_width
+      applicability: confirmed_exit_doors
+      source_path: Pset_BIMReview.ClearWidth
+      missing_status: REVIEW
+
+egress:
+  id: EGRESS-001
+  title: Mainland exit-door clear width — GB 55037-2022 7.1.4(1)
+  category: Mainland China fire safety / means of escape
+  version: 1.0.0
+  enabled: true
+  threshold:
+    value: 800
+    unit: mm
+    operator: ">="
+  contradiction_tolerance_mm: 5
+  proxy_policy: review

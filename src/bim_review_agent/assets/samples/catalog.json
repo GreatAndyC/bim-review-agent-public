@@ -1,0 +1,37 @@
+[
+  {
+    "id": "mixed_review",
+    "filename": "mixed_review.ifc",
+    "title": "Mixed review",
+    "description": "Four doors exercise pass, fail, missing metadata, and ambiguous exit classification.",
+    "expected": "8 PASS · 1 FAIL · 4 REVIEW"
+  },
+  {
+    "id": "narrow_exit",
+    "filename": "narrow_exit.ifc",
+    "title": "Narrow exit",
+    "description": "A confirmed exit reports an 820 mm clear width; with 31 occupants, Table B2 selects an 850 mm minimum.",
+    "expected": "3 PASS · 1 FAIL"
+  },
+  {
+    "id": "proxy_width",
+    "filename": "proxy_width.ifc",
+    "title": "Proxy-only width",
+    "description": "A confirmed exit has OverallWidth but no verified clear-opening width.",
+    "expected": "3 PASS · 1 REVIEW"
+  },
+  {
+    "id": "missing_information",
+    "filename": "missing_information.ifc",
+    "title": "Missing information",
+    "description": "A confirmed exit is missing both its door name and fire-rating metadata.",
+    "expected": "2 PASS · 2 REVIEW"
+  },
+  {
+    "id": "clean",
+    "filename": "clean.ifc",
+    "title": "Clean baseline",
+    "description": "A complete exit and a named internal door satisfy every applicable demo check.",
+    "expected": "6 PASS"
+  }
+]

@@ -1,0 +1,63 @@
+{
+  "authority": {
+    "clause": null,
+    "jurisdiction": "Demonstration only — not jurisdiction-specific",
+    "limitation": "This configuration demonstrates review mechanics and engineering judgment. It is not an approved Hong Kong statutory clause and cannot certify compliance.",
+    "source_edition": null,
+    "source_landing_page": null,
+    "source_retrieved_on": null,
+    "source_title": "BIM Review Agent demonstration requirements",
+    "source_url": null,
+    "type": "DEMO_PROJECT_RULE"
+  },
+  "egress": {
+    "category": "Egress",
+    "contradiction_tolerance_mm": 5.0,
+    "enabled": true,
+    "id": "EGRESS-001",
+    "proxy_policy": "review",
+    "threshold": {
+      "operator": ">=",
+      "unit": "mm",
+      "value": 900.0
+    },
+    "title": "Exit door clear width",
+    "version": "1.0.0"
+  },
+  "id": "hku-demo-2026",
+  "info": {
+    "category": "Information quality",
+    "enabled": true,
+    "id": "INFO-001",
+    "requirements": [
+      {
+        "applicability": "all_doors",
+        "field": "name",
+        "key": "door-name",
+        "label": "Door name",
+        "missing_status": "REVIEW",
+        "source_path": "IfcDoor.Name"
+      },
+      {
+        "applicability": "all_doors",
+        "field": "fire_exit",
+        "key": "exit-classification",
+        "label": "Exit classification",
+        "missing_status": "REVIEW",
+        "source_path": "Pset_DoorCommon.FireExit"
+      },
+      {
+        "applicability": "confirmed_exit_doors",
+        "field": "fire_rating",
+        "key": "exit-fire-rating",
+        "label": "Exit door fire rating",
+        "missing_status": "REVIEW",
+        "source_path": "Pset_DoorCommon.FireRating"
+      }
+    ],
+    "title": "Door information evidence",
+    "version": "1.0.0"
+  },
+  "title": "HKU assessment demonstration rule pack",
+  "version": "1.0.0"
+}

@@ -1,0 +1,544 @@
+{
+  "$defs": {
+    "AuthorityType": {
+      "enum": [
+        "DEMO_PROJECT_RULE",
+        "PROJECT_REQUIREMENT",
+        "AUTHORITATIVE_STANDARD"
+      ],
+      "title": "AuthorityType",
+      "type": "string"
+    },
+    "EntityRef": {
+      "additionalProperties": false,
+      "properties": {
+        "global_id": {
+          "title": "Global Id",
+          "type": "string"
+        },
+        "ifc_class": {
+          "title": "Ifc Class",
+          "type": "string"
+        },
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Name"
+        },
+        "object_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Object Type"
+        },
+        "storey": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Storey"
+        },
+        "tag": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tag"
+        }
+      },
+      "required": [
+        "ifc_class",
+        "global_id"
+      ],
+      "title": "EntityRef",
+      "type": "object"
+    },
+    "Explanation": {
+      "additionalProperties": false,
+      "properties": {
+        "boundary": {
+          "title": "Boundary",
+          "type": "string"
+        },
+        "next_step": {
+          "title": "Next Step",
+          "type": "string"
+        },
+        "summary": {
+          "title": "Summary",
+          "type": "string"
+        },
+        "why_it_matters": {
+          "title": "Why It Matters",
+          "type": "string"
+        }
+      },
+      "required": [
+        "summary",
+        "why_it_matters",
+        "next_step",
+        "boundary"
+      ],
+      "title": "Explanation",
+      "type": "object"
+    },
+    "Finding": {
+      "additionalProperties": false,
+      "properties": {
+        "applicability": {
+          "title": "Applicability",
+          "type": "string"
+        },
+        "category": {
+          "title": "Category",
+          "type": "string"
+        },
+        "entity": {
+          "$ref": "#/$defs/EntityRef"
+        },
+        "explanation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Explanation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "finding_id": {
+          "title": "Finding Id",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "model_evidence": {
+          "$ref": "#/$defs/ModelEvidence"
+        },
+        "recommendation": {
+          "title": "Recommendation",
+          "type": "string"
+        },
+        "rule_evidence": {
+          "$ref": "#/$defs/RuleEvidence"
+        },
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "rule_title": {
+          "title": "Rule Title",
+          "type": "string"
+        },
+        "severity": {
+          "$ref": "#/$defs/Severity"
+        },
+        "status": {
+          "$ref": "#/$defs/FindingStatus"
+        }
+      },
+      "required": [
+        "finding_id",
+        "rule_id",
+        "rule_title",
+        "category",
+        "status",
+        "severity",
+        "entity",
+        "applicability",
+        "message",
+        "recommendation",
+        "model_evidence",
+        "rule_evidence"
+      ],
+      "title": "Finding",
+      "type": "object"
+    },
+    "FindingStatus": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "REVIEW"
+      ],
+      "title": "FindingStatus",
+      "type": "string"
+    },
+    "ModelEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "applicability_signal": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Observation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "observations": {
+          "items": {
+            "$ref": "#/$defs/Observation"
+          },
+          "title": "Observations",
+          "type": "array"
+        }
+      },
+      "title": "ModelEvidence",
+      "type": "object"
+    },
+    "ModelInventory": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_counts": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "title": "Entity Counts",
+          "type": "object"
+        },
+        "length_to_metre_scale": {
+          "title": "Length To Metre Scale",
+          "type": "number"
+        },
+        "length_unit": {
+          "title": "Length Unit",
+          "type": "string"
+        },
+        "length_unit_known": {
+          "title": "Length Unit Known",
+          "type": "boolean"
+        },
+        "schema_name": {
+          "title": "Schema Name",
+          "type": "string"
+        },
+        "total_entities": {
+          "title": "Total Entities",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "schema_name",
+        "length_unit",
+        "length_unit_known",
+        "length_to_metre_scale",
+        "total_entities",
+        "entity_counts"
+      ],
+      "title": "ModelInventory",
+      "type": "object"
+    },
+    "Observation": {
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "normalized_value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Normalized Value"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "raw_value": {
+          "default": null,
+          "title": "Raw Value"
+        },
+        "reliability": {
+          "$ref": "#/$defs/Reliability"
+        },
+        "source_path": {
+          "title": "Source Path",
+          "type": "string"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit"
+        }
+      },
+      "required": [
+        "label",
+        "source_path",
+        "reliability"
+      ],
+      "title": "Observation",
+      "type": "object"
+    },
+    "Reliability": {
+      "enum": [
+        "EXPLICIT",
+        "DERIVED",
+        "PROXY",
+        "MISSING",
+        "CONTRADICTORY"
+      ],
+      "title": "Reliability",
+      "type": "string"
+    },
+    "RuleEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "authority": {
+          "$ref": "#/$defs/AuthorityType"
+        },
+        "clause": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Clause"
+        },
+        "jurisdiction": {
+          "title": "Jurisdiction",
+          "type": "string"
+        },
+        "limitation": {
+          "title": "Limitation",
+          "type": "string"
+        },
+        "parameters": {
+          "additionalProperties": true,
+          "title": "Parameters",
+          "type": "object"
+        },
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "source_title": {
+          "title": "Source Title",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "version": {
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "rule_id",
+        "title",
+        "version",
+        "authority",
+        "source_title",
+        "jurisdiction",
+        "limitation"
+      ],
+      "title": "RuleEvidence",
+      "type": "object"
+    },
+    "RunStage": {
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "additionalProperties": true,
+          "title": "Data",
+          "type": "object"
+        },
+        "detail": {
+          "title": "Detail",
+          "type": "string"
+        },
+        "key": {
+          "title": "Key",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "order": {
+          "title": "Order",
+          "type": "integer"
+        },
+        "status": {
+          "$ref": "#/$defs/StageStatus"
+        }
+      },
+      "required": [
+        "order",
+        "key",
+        "label",
+        "status",
+        "detail"
+      ],
+      "title": "RunStage",
+      "type": "object"
+    },
+    "Severity": {
+      "enum": [
+        "INFO",
+        "WARNING",
+        "ERROR"
+      ],
+      "title": "Severity",
+      "type": "string"
+    },
+    "SourceFile": {
+      "additionalProperties": false,
+      "properties": {
+        "filename": {
+          "title": "Filename",
+          "type": "string"
+        },
+        "sha256": {
+          "title": "Sha256",
+          "type": "string"
+        },
+        "size_bytes": {
+          "title": "Size Bytes",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "filename",
+        "size_bytes",
+        "sha256"
+      ],
+      "title": "SourceFile",
+      "type": "object"
+    },
+    "StageStatus": {
+      "enum": [
+        "COMPLETED",
+        "FAILED",
+        "SKIPPED"
+      ],
+      "title": "StageStatus",
+      "type": "string"
+    }
+  },
+  "$id": "urn:bim-review-agent:review-run:v1",
+  "additionalProperties": false,
+  "properties": {
+    "completed_at": {
+      "format": "date-time",
+      "title": "Completed At",
+      "type": "string"
+    },
+    "duration_ms": {
+      "title": "Duration Ms",
+      "type": "integer"
+    },
+    "findings": {
+      "items": {
+        "$ref": "#/$defs/Finding"
+      },
+      "title": "Findings",
+      "type": "array"
+    },
+    "inventory": {
+      "$ref": "#/$defs/ModelInventory"
+    },
+    "rule_pack_id": {
+      "title": "Rule Pack Id",
+      "type": "string"
+    },
+    "rule_pack_version": {
+      "title": "Rule Pack Version",
+      "type": "string"
+    },
+    "run_id": {
+      "title": "Run Id",
+      "type": "string"
+    },
+    "source": {
+      "$ref": "#/$defs/SourceFile"
+    },
+    "started_at": {
+      "format": "date-time",
+      "title": "Started At",
+      "type": "string"
+    },
+    "trace": {
+      "items": {
+        "$ref": "#/$defs/RunStage"
+      },
+      "title": "Trace",
+      "type": "array"
+    }
+  },
+  "required": [
+    "run_id",
+    "started_at",
+    "completed_at",
+    "duration_ms",
+    "source",
+    "rule_pack_id",
+    "rule_pack_version",
+    "inventory",
+    "trace",
+    "findings"
+  ],
+  "title": "ReviewRun",
+  "type": "object"
+}

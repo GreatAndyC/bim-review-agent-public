@@ -1,0 +1,98 @@
+{
+  "mode": "minimax-frame-timed-narration",
+  "narration": "minimax",
+  "voice_id": "Chinese (Mandarin)_Reliable_Executive",
+  "voice_speed": 1.08,
+  "music": "minimax-light-upbeat-technology-instrumental",
+  "voices": [
+    {
+      "frame": 1,
+      "words": [
+        {"text": "BIM Agent 用来做 IFC 建筑模型预审，", "start": 0.4, "end": 3.3},
+        {"text": "今天检查门名称和出口门净宽。", "start": 3.6, "end": 6.1}
+      ]
+    },
+    {
+      "frame": 2,
+      "words": [
+        {"text": "进入新建审查，上传 mixed_review.ifc。", "start": 0.4, "end": 3.2},
+        {"text": "页面显示文件已选择，", "start": 3.5, "end": 6.8},
+        {"text": "并提示同一入口也支持一次选择多个 IFC 文件。", "start": 7.1, "end": 11.2}
+      ]
+    },
+    {
+      "frame": 3,
+      "words": [
+        {"text": "下一步选择香港消防安全预审，", "start": 0.4, "end": 3.3},
+        {"text": "确认两条规则：门信息证据完整性", "start": 3.6, "end": 6.8},
+        {"text": "和出口门最小净宽，然后进入运行。", "start": 7.1, "end": 9.4}
+      ]
+    },
+    {
+      "frame": 4,
+      "words": [
+        {"text": "点击运行审查。", "start": 0.4, "end": 2.3},
+        {"text": "页面实时显示上传、检查模型、运行规则", "start": 2.6, "end": 6.8},
+        {"text": "和组装证据四个阶段；完成后直接查看结果。", "start": 7.1, "end": 9.7}
+      ]
+    },
+    {
+      "frame": 5,
+      "words": [
+        {"text": "结果总览先给出分流：", "start": 0.4, "end": 2.6},
+        {"text": "十七条发现，十二项通过、", "start": 2.9, "end": 5.5},
+        {"text": "一项失败、四项待复核。", "start": 5.8, "end": 8.1},
+        {"text": "接下来打开需要处理的项目。", "start": 8.4, "end": 10.6}
+      ]
+    },
+    {
+      "frame": 6,
+      "words": [
+        {"text": "结果页可以复制 JSON、复制 Markdown，", "start": 0.4, "end": 3.0},
+        {"text": "或打印 PDF，", "start": 3.3, "end": 5.8},
+        {"text": "审查结论可以直接交给工程师继续处理。", "start": 6.1, "end": 8.4}
+      ]
+    },
+    {
+      "frame": 7,
+      "words": [
+        {"text": "名称检查发现，某个 IfcDoor 缺少 IfcDoor.Name，", "start": 0.4, "end": 3.1},
+        {"text": "所以标记为 REVIEW。", "start": 3.4, "end": 5.6},
+        {"text": "GlobalId 只用于定位，", "start": 5.9, "end": 8.8},
+        {"text": "不能替代门名称。", "start": 9.1, "end": 10.8}
+      ]
+    },
+    {
+      "frame": 8,
+      "words": [
+        {"text": "宽度检查给出确定性失败：", "start": 0.4, "end": 2.8},
+        {"text": "D-11 的 ClearWidth 是八百二十毫米，", "start": 3.1, "end": 5.6},
+        {"text": "要求至少八百五十，差三十毫米。", "start": 5.9, "end": 8.3},
+        {"text": "OverallWidth 只能作为代理证据。", "start": 8.6, "end": 10.8}
+      ]
+    },
+    {
+      "frame": 9,
+      "words": [
+        {"text": "批量处理时，一次选择多个 IFC。", "start": 0.4, "end": 3.1},
+        {"text": "这里选了 mixed_review.ifc 和 clean.ifc，", "start": 3.4, "end": 6.5},
+        {"text": "分别审查。", "start": 6.8, "end": 9.0}
+      ]
+    },
+    {
+      "frame": 10,
+      "words": [
+        {"text": "批量结果页汇总每个文件的发现，", "start": 0.4, "end": 3.2},
+        {"text": "勾选已完成文件，就能一次导出所选 PDF。", "start": 3.5, "end": 6.7},
+        {"text": "规则配置、样例与数据、历史记录", "start": 7.0, "end": 10.0},
+        {"text": "也都可以从侧栏进入。", "start": 10.3, "end": 12.6}
+      ]
+    },
+    {
+      "frame": 11,
+      "words": [
+        {"text": "以上就是 BIM Agent 网页 Demo 版本的全部内容。", "start": 0.8, "end": 4.4}
+      ]
+    }
+  ]
+}

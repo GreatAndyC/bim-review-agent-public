@@ -1,0 +1,308 @@
+{
+  "$defs": {
+    "AuthorityConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "clause": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Clause"
+        },
+        "jurisdiction": {
+          "title": "Jurisdiction",
+          "type": "string"
+        },
+        "limitation": {
+          "title": "Limitation",
+          "type": "string"
+        },
+        "source_edition": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Edition"
+        },
+        "source_landing_page": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Landing Page"
+        },
+        "source_retrieved_on": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Retrieved On"
+        },
+        "source_title": {
+          "title": "Source Title",
+          "type": "string"
+        },
+        "source_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Url"
+        },
+        "type": {
+          "$ref": "#/$defs/AuthorityType"
+        }
+      },
+      "required": [
+        "type",
+        "source_title",
+        "jurisdiction",
+        "limitation"
+      ],
+      "title": "AuthorityConfig",
+      "type": "object"
+    },
+    "AuthorityType": {
+      "enum": [
+        "DEMO_PROJECT_RULE",
+        "PROJECT_REQUIREMENT",
+        "AUTHORITATIVE_STANDARD"
+      ],
+      "title": "AuthorityType",
+      "type": "string"
+    },
+    "EgressRuleConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "category": {
+          "title": "Category",
+          "type": "string"
+        },
+        "contradiction_tolerance_mm": {
+          "default": 5.0,
+          "minimum": 0,
+          "title": "Contradiction Tolerance Mm",
+          "type": "number"
+        },
+        "enabled": {
+          "default": true,
+          "title": "Enabled",
+          "type": "boolean"
+        },
+        "id": {
+          "const": "EGRESS-001",
+          "title": "Id",
+          "type": "string"
+        },
+        "proxy_policy": {
+          "const": "review",
+          "default": "review",
+          "title": "Proxy Policy",
+          "type": "string"
+        },
+        "threshold": {
+          "$ref": "#/$defs/ThresholdConfig"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "version": {
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "category",
+        "version",
+        "threshold"
+      ],
+      "title": "EgressRuleConfig",
+      "type": "object"
+    },
+    "InfoRequirementConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "applicability": {
+          "enum": [
+            "all_doors",
+            "confirmed_exit_doors"
+          ],
+          "title": "Applicability",
+          "type": "string"
+        },
+        "field": {
+          "enum": [
+            "name",
+            "fire_rating",
+            "fire_exit",
+            "clear_width",
+            "occupant_capacity"
+          ],
+          "title": "Field",
+          "type": "string"
+        },
+        "key": {
+          "title": "Key",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "missing_status": {
+          "const": "REVIEW",
+          "default": "REVIEW",
+          "title": "Missing Status",
+          "type": "string"
+        },
+        "source_path": {
+          "title": "Source Path",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "label",
+        "field",
+        "applicability",
+        "source_path"
+      ],
+      "title": "InfoRequirementConfig",
+      "type": "object"
+    },
+    "InfoRuleConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "category": {
+          "title": "Category",
+          "type": "string"
+        },
+        "enabled": {
+          "default": true,
+          "title": "Enabled",
+          "type": "boolean"
+        },
+        "id": {
+          "const": "INFO-001",
+          "title": "Id",
+          "type": "string"
+        },
+        "requirements": {
+          "items": {
+            "$ref": "#/$defs/InfoRequirementConfig"
+          },
+          "title": "Requirements",
+          "type": "array"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "version": {
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "category",
+        "version",
+        "requirements"
+      ],
+      "title": "InfoRuleConfig",
+      "type": "object"
+    },
+    "ThresholdConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "operator": {
+          "const": ">=",
+          "default": ">=",
+          "title": "Operator",
+          "type": "string"
+        },
+        "unit": {
+          "const": "mm",
+          "default": "mm",
+          "title": "Unit",
+          "type": "string"
+        },
+        "value": {
+          "exclusiveMinimum": 0,
+          "title": "Value",
+          "type": "number"
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "title": "ThresholdConfig",
+      "type": "object"
+    }
+  },
+  "$id": "urn:bim-review-agent:rule-pack:v1",
+  "additionalProperties": false,
+  "properties": {
+    "authority": {
+      "$ref": "#/$defs/AuthorityConfig"
+    },
+    "egress": {
+      "$ref": "#/$defs/EgressRuleConfig"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "info": {
+      "$ref": "#/$defs/InfoRuleConfig"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "version": {
+      "title": "Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "version",
+    "title",
+    "authority",
+    "info",
+    "egress"
+  ],
+  "title": "RulePackConfig",
+  "type": "object"
+}

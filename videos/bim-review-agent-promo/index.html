@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js" integrity="sha384-sG0Hv1tP1lZCk9KQmrIbY/XNwi+OY84GQqhMscbnsoBFqAz8KNCil1kvfL3Hbbk2" crossorigin="anonymous"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #000;
+      }
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #FFFFFF;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="113"
+      data-width="1920"
+      data-height="1080"
+    >
+      <div
+        id="el-01-before-site"
+        class="scene"
+        data-composition-id="01-before-site"
+        data-composition-src="compositions/frames/01-before-site.html"
+        data-start="0"
+        data-duration="9"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-01-before-site-voice"
+        src="assets/audio/minimax/voice-01.mp3"
+        data-start="0"
+        data-duration="9"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-02-product-promise"
+        class="scene"
+        data-composition-id="02-product-promise"
+        data-composition-src="compositions/frames/02-product-promise.html"
+        data-start="9"
+        data-duration="12"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-02-product-promise-voice"
+        src="assets/audio/minimax/voice-02.mp3"
+        data-start="9"
+        data-duration="12"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-03-authority-split"
+        class="scene"
+        data-composition-id="03-authority-split"
+        data-composition-src="compositions/frames/03-authority-split.html"
+        data-start="21"
+        data-duration="10"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-03-authority-split-voice"
+        src="assets/audio/minimax/voice-03.mp3"
+        data-start="21"
+        data-duration="10"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-04-agent-process"
+        class="scene"
+        data-composition-id="04-agent-process"
+        data-composition-src="compositions/frames/04-agent-process.html"
+        data-start="31"
+        data-duration="10"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-04-agent-process-voice"
+        src="assets/audio/minimax/voice-04.mp3"
+        data-start="31"
+        data-duration="10"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-05-canonical-run"
+        class="scene"
+        data-composition-id="05-canonical-run"
+        data-composition-src="compositions/frames/05-canonical-run.html"
+        data-start="41"
+        data-duration="11"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-05-canonical-run-voice"
+        src="assets/audio/minimax/voice-05.mp3"
+        data-start="41"
+        data-duration="11"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-06-fail-proof"
+        class="scene"
+        data-composition-id="06-fail-proof"
+        data-composition-src="compositions/frames/06-fail-proof.html"
+        data-start="52"
+        data-duration="9"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-06-fail-proof-voice"
+        src="assets/audio/minimax/voice-06.mp3"
+        data-start="52"
+        data-duration="9"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-07-demo-boundary"
+        class="scene"
+        data-composition-id="07-demo-boundary"
+        data-composition-src="compositions/frames/07-demo-boundary.html"
+        data-start="61"
+        data-duration="11"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-07-demo-boundary-voice"
+        src="assets/audio/minimax/voice-07.mp3"
+        data-start="61"
+        data-duration="11"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-08-review-proof"
+        class="scene"
+        data-composition-id="08-review-proof"
+        data-composition-src="compositions/frames/08-review-proof.html"
+        data-start="72"
+        data-duration="13"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-08-review-proof-voice"
+        src="assets/audio/minimax/voice-08.mp3"
+        data-start="72"
+        data-duration="13"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-09-export-handoff"
+        class="scene"
+        data-composition-id="09-export-handoff"
+        data-composition-src="compositions/frames/09-export-handoff.html"
+        data-start="85"
+        data-duration="10"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-09-export-handoff-voice"
+        src="assets/audio/minimax/voice-09.mp3"
+        data-start="85"
+        data-duration="10"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-10-engineering-close"
+        class="scene"
+        data-composition-id="10-engineering-close"
+        data-composition-src="compositions/frames/10-engineering-close.html"
+        data-start="95"
+        data-duration="13"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-10-engineering-close-voice"
+        src="assets/audio/minimax/voice-10.mp3"
+        data-start="95"
+        data-duration="13"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-11-closing"
+        class="scene"
+        data-composition-id="11-closing"
+        data-composition-src="compositions/frames/11-closing.html"
+        data-start="108"
+        data-duration="5"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-11-closing-voice"
+        src="assets/audio/minimax/voice-11.mp3"
+        data-start="108"
+        data-duration="5"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <!-- BGM -->
+      <audio
+        id="el-bgm"
+        src="assets/audio/minimax/bgm-instrumental.mp3"
+        data-start="0"
+        data-duration="113"
+        data-track-index="11"
+        data-volume="0.1"
+      ></audio>
+
+      <!-- captions -->
+      <div
+        id="el-captions"
+        class="scene"
+        data-composition-id="captions"
+        data-composition-src="compositions/captions.html"
+        data-start="0"
+        data-duration="113"
+        data-track-index="2"
+      ></div>
+
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

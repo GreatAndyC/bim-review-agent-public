@@ -1,0 +1,74 @@
+{
+  "bgm": {
+    "path": "assets/audio/minimax/bgm-instrumental.mp3",
+    "volume": 0.1
+  },
+  "bgm_pending": false,
+  "voices": [
+    {
+      "frame": 1,
+      "path": "assets/audio/minimax/voice-01.mp3",
+      "duration_s": 5.536125
+    },
+    {
+      "frame": 2,
+      "path": "assets/audio/minimax/voice-02.mp3",
+      "duration_s": 11.196
+    },
+    {
+      "frame": 3,
+      "path": "assets/audio/minimax/voice-03.mp3",
+      "duration_s": 9
+    },
+    {
+      "frame": 4,
+      "path": "assets/audio/minimax/voice-04.mp3",
+      "duration_s": 9.72
+    },
+    {
+      "frame": 5,
+      "path": "assets/audio/minimax/voice-05.mp3",
+      "duration_s": 10.08
+    },
+    {
+      "frame": 6,
+      "path": "assets/audio/minimax/voice-06.mp3",
+      "duration_s": 7.632
+    },
+    {
+      "frame": 7,
+      "path": "assets/audio/minimax/voice-07.mp3",
+      "duration_s": 10.152
+    },
+    {
+      "frame": 8,
+      "path": "assets/audio/minimax/voice-08.mp3",
+      "duration_s": 12.312
+    },
+    {
+      "frame": 9,
+      "path": "assets/audio/minimax/voice-09.mp3",
+      "duration_s": 9.252
+    },
+    {
+      "frame": 10,
+      "path": "assets/audio/minimax/voice-10.mp3",
+      "duration_s": 12.096
+    },
+    {
+      "frame": 11,
+      "path": "assets/audio/minimax/voice-11.mp3",
+      "duration_s": 3.471406
+    }
+  ],
+  "sfx": [],
+  "provider": {
+    "name": "minimax",
+    "tts_model": "speech-2.8-hd",
+    "voice_id": "Chinese (Mandarin)_Reliable_Executive",
+    "music_model": "music-3.0-free",
+    "music_prompt": "Light upbeat technology instrumental for a precise BIM review product walkthrough; bright soft plucked synth, gentle piano stabs, a clean restrained electronic pulse, subtle forward motion and curious energy, modern engineering atmosphere, no vocals, no lyrics, no dramatic trailer hit, no distracting lead melody, suitable underneath clear Mandarin narration.",
+    "generated_at": "2026-08-13T09:44:15.822Z",
+    "note": "Generated locally; audio files are ignored from the public repository."
+  }
+}

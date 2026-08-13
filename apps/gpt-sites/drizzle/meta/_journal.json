@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1786258578871,
+      "tag": "0000_medical_maestro",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1786261366959,
+      "tag": "0001_elite_thor_girl",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1786263545252,
+      "tag": "0002_chilly_jocasta",
+      "breakpoints": true
+    }
+  ]
+}

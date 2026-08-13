@@ -1,0 +1,63 @@
+{
+  "authority": {
+    "clause": "7.1.4(1)",
+    "jurisdiction": "Chinese Mainland",
+    "limitation": "This is the first executable product slice for GB 55037-2022. It checks only an explicitly classified IfcDoor against the verified clear-opening minimum in Clause 7.1.4(1). It is a deterministic pre-check and evidence report, not statutory certification or professional sign-off. Door swing direction, building use, occupant load, floor or underground depth, number of exits, total egress width, and geometry-derived applicability are not inferred.",
+    "source_edition": "2022 · effective 2023-06-01",
+    "source_landing_page": "https://www.ndls.org.cn/standard/detail/b8a04ed863a255a534225f811d7a7410",
+    "source_retrieved_on": "2026-08-12",
+    "source_title": "GB 55037-2022《建筑防火通用规范》",
+    "source_url": "https://www.gov.cn/zhengce/zhengceku/2023-01/30/5739161/files/b1fb02d581bd4c2c866b488ea730c652.pdf",
+    "type": "AUTHORITATIVE_STANDARD"
+  },
+  "egress": {
+    "category": "Mainland China fire safety / means of escape",
+    "contradiction_tolerance_mm": 5.0,
+    "enabled": true,
+    "id": "EGRESS-001",
+    "proxy_policy": "review",
+    "threshold": {
+      "operator": ">=",
+      "unit": "mm",
+      "value": 800.0
+    },
+    "title": "Mainland exit-door clear width — GB 55037-2022 7.1.4(1)",
+    "version": "1.0.0"
+  },
+  "id": "cn-fire-55037-2022",
+  "info": {
+    "category": "Mainland China fire safety / information quality",
+    "enabled": true,
+    "id": "INFO-001",
+    "requirements": [
+      {
+        "applicability": "all_doors",
+        "field": "name",
+        "key": "door-name",
+        "label": "Door name",
+        "missing_status": "REVIEW",
+        "source_path": "IfcDoor.Name"
+      },
+      {
+        "applicability": "all_doors",
+        "field": "fire_exit",
+        "key": "exit-classification",
+        "label": "Exit classification",
+        "missing_status": "REVIEW",
+        "source_path": "Pset_DoorCommon.FireExit"
+      },
+      {
+        "applicability": "confirmed_exit_doors",
+        "field": "clear_width",
+        "key": "clear-width",
+        "label": "Verified clear opening width",
+        "missing_status": "REVIEW",
+        "source_path": "Pset_BIMReview.ClearWidth"
+      }
+    ],
+    "title": "Required evidence for mainland exit-door pre-check",
+    "version": "1.0.0"
+  },
+  "title": "GB 55037-2022 Mainland China fire-safety baseline",
+  "version": "1.0.0"
+}

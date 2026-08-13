@@ -1,0 +1,206 @@
+{
+  "version": 1,
+  "purpose": "Deterministic issue fixtures for supported door evidence and egress rules.",
+  "cases": [
+    {
+      "issue_id": "issue-01-no-doors",
+      "title": "Model without door elements",
+      "issue_type": "zero_doors",
+      "profile_id": "demo_hku",
+      "expected_outcome": "NO_FINDINGS",
+      "description": "The model has valid spatial structure but no IfcDoor, so door rules have no applicable target.",
+      "path": "issue-01-no-doors.ifc",
+      "door_spec_count": 0
+    },
+    {
+      "issue_id": "issue-02-missing-exit-door-name",
+      "title": "Confirmed exit has no name",
+      "issue_type": "missing_door_name",
+      "profile_id": "demo_hku",
+      "expected_outcome": "REVIEW",
+      "description": "IfcDoor.Name is missing while the explicit exit classification is present.",
+      "path": "issue-02-missing-exit-door-name.ifc",
+      "door_spec_count": 1
+    },
+    {
+      "issue_id": "issue-03-missing-exit-classification",
+      "title": "Exit classification is missing",
+      "issue_type": "missing_exit_classification",
+      "profile_id": "demo_hku",
+      "expected_outcome": "REVIEW",
+      "description": "The door is named like an exit but Pset_DoorCommon.FireExit is not populated.",
+      "path": "issue-03-missing-exit-classification.ifc",
+      "door_spec_count": 1
+    },
+    {
+      "issue_id": "issue-04-invalid-exit-classification",
+      "title": "Exit classification cannot be normalized",
+      "issue_type": "invalid_exit_classification",
+      "profile_id": "demo_hku",
+      "expected_outcome": "REVIEW",
+      "description": "The model contains a non-boolean classification value and the engine must not infer applicability.",
+      "path": "issue-04-invalid-exit-classification.ifc",
+      "door_spec_count": 1
+    },
+    {
+      "issue_id": "issue-05-missing-fire-rating",
+      "title": "Confirmed exit has no fire rating",
+      "issue_type": "missing_fire_rating",
+      "profile_id": "demo_hku",
+      "expected_outcome": "REVIEW",
+      "description": "A confirmed exit door is missing Pset_DoorCommon.FireRating evidence.",
+      "path": "issue-05-missing-fire-rating.ifc",
+      "door_spec_count": 1
+    },
+    {
+      "issue_id": "issue-06-empty-fire-rating",
+      "title": "Fire rating is an empty string",
+      "issue_type": "invalid_fire_rating",
+      "profile_id": "demo_hku",
+      "expected_outcome": "REVIEW",
+      "description": "The fire-rating property exists but contains no usable value.",
+      "path": "issue-06-empty-fire-rating.ifc",
+      "door_spec_count": 1
+    },
+    {
+      "issue_id": "issue-07-missing-clear-width",
+      "title": "Exit has no measured clear width",
+      "issue_type": "missing_clear_width",
+      "profile_id": "demo_hku",
+      "expected_outcome": "REVIEW",
+      "description": "The model has only nominal OverallWidth; the engine must not treat it as verified clear opening.",
+      "path": "issue-07-missing-clear-width.ifc",
+      "door_spec_count": 1
+    },
+    {
+      "issue_id": "issue-08-proxy-only-width",
+      "title": "Only nominal width is available",
+      "issue_type": "proxy_width_only",
+      "profile_id": "cn-fire-55037-2022",
+      "expected_outcome": "REVIEW",
+      "description": "The model reports OverallWidth but omits Pset_BIMReview.ClearWidth, so the mainland pre-check must return REVIEW.",
+      "path": "issue-08-proxy-only-width.ifc",
+      "door_spec_count": 1
+    },
+    {
+      "issue_id": "issue-09-width-below-mainland-threshold",
+      "title": "Clear width is below 800 mm",
+      "issue_type": "mainland_width_fail",
+      "profile_id": "cn-fire-55037-2022",
+      "expected_outcome": "FAIL",
+      "description": "The explicit clear width is 799 mm, below the configured GB 55037-2022 pre-check threshold.",
+      "path": "issue-09-width-below-mainland-threshold.ifc",
+      "door_spec_count": 1
+    },
+    {
+      "issue_id": "issue-10-width-below-demo-threshold",
+      "title": "Clear width is below the demonstration threshold",
+      "issue_type": "demo_width_fail",
+      "profile_id": "demo_hku",
+      "expected_outcome": "FAIL",
+      "description": "The explicit clear width is 899 mm, below the demo pack's 900 mm threshold.",
+      "path": "issue-10-width-below-demo-threshold.ifc",
+      "door_spec_count": 1
+    },
+    {
+      "issue_id": "issue-11-zero-clear-width",
+      "title": "Clear width is zero",
+      "issue_type": "non_positive_clear_width",
+      "profile_id": "cn-fire-55037-2022",
+      "expected_outcome": "REVIEW",
+      "description": "A non-positive measured width is invalid evidence and must not become a passing comparison.",
+      "path": "issue-11-zero-clear-width.ifc",
+      "door_spec_count": 1
+    },
+    {
+      "issue_id": "issue-12-negative-clear-width",
+      "title": "Clear width is negative",
+      "issue_type": "negative_clear_width",
+      "profile_id": "demo_hku",
+      "expected_outcome": "REVIEW",
+      "description": "A negative width value is invalid evidence and should be surfaced for correction.",
+      "path": "issue-12-negative-clear-width.ifc",
+      "door_spec_count": 1
+    },
+    {
+      "issue_id": "issue-13-hk-capacity-missing",
+      "title": "Hong Kong capacity evidence is missing",
+      "issue_type": "missing_occupant_capacity",
+      "profile_id": "hk-fire-safety-2011-2024",
+      "expected_outcome": "REVIEW",
+      "description": "A confirmed exit has width evidence but no occupant capacity to select a Table B2 row.",
+      "path": "issue-13-hk-capacity-missing.ifc",
+      "door_spec_count": 1
+    },
+    {
+      "issue_id": "issue-14-hk-capacity-fractional",
+      "title": "Hong Kong capacity is fractional",
+      "issue_type": "invalid_occupant_capacity",
+      "profile_id": "hk-fire-safety-2011-2024",
+      "expected_outcome": "REVIEW",
+      "description": "Table B2 requires an integer occupant count; 30.5 cannot select a deterministic row.",
+      "path": "issue-14-hk-capacity-fractional.ifc",
+      "door_spec_count": 1
+    },
+    {
+      "issue_id": "issue-15-hk-capacity-out-of-range",
+      "title": "Hong Kong capacity is outside the direct-check range",
+      "issue_type": "table_row_not_machine_checkable",
+      "profile_id": "hk-fire-safety-2011-2024",
+      "expected_outcome": "REVIEW",
+      "description": "A capacity above the directly machine-checkable Table B2 rows requires authority or professional review.",
+      "path": "issue-15-hk-capacity-out-of-range.ifc",
+      "door_spec_count": 1
+    },
+    {
+      "issue_id": "issue-16-hk-boundary-30-narrow",
+      "title": "Capacity 30 with a 749 mm clear opening",
+      "issue_type": "hk_boundary_width_fail",
+      "profile_id": "hk-fire-safety-2011-2024",
+      "expected_outcome": "FAIL",
+      "description": "This boundary case is one millimetre below the 750 mm minimum for 4–30 occupants.",
+      "path": "issue-16-hk-boundary-30-narrow.ifc",
+      "door_spec_count": 1
+    },
+    {
+      "issue_id": "issue-17-hk-boundary-31-narrow",
+      "title": "Capacity 31 with an 849 mm clear opening",
+      "issue_type": "hk_boundary_width_fail",
+      "profile_id": "hk-fire-safety-2011-2024",
+      "expected_outcome": "FAIL",
+      "description": "This boundary case is one millimetre below the 850 mm minimum for 31–200 occupants.",
+      "path": "issue-17-hk-boundary-31-narrow.ifc",
+      "door_spec_count": 1
+    },
+    {
+      "issue_id": "issue-18-contradictory-exit-signal",
+      "title": "Name suggests exit but property says non-exit",
+      "issue_type": "exit_classification_contradiction",
+      "profile_id": "demo_hku",
+      "expected_outcome": "REVIEW",
+      "description": "The explicit non-exit property conflicts with exit-related naming metadata.",
+      "path": "issue-18-contradictory-exit-signal.ifc",
+      "door_spec_count": 1
+    },
+    {
+      "issue_id": "issue-19-missing-internal-door-name",
+      "title": "Internal door has no name",
+      "issue_type": "missing_door_name_internal",
+      "profile_id": "demo_hku",
+      "expected_outcome": "REVIEW",
+      "description": "All doors are subject to the configured information check, including non-exit doors.",
+      "path": "issue-19-missing-internal-door-name.ifc",
+      "door_spec_count": 1
+    },
+    {
+      "issue_id": "issue-20-multiple-missing-fields",
+      "title": "Exit is missing several required fields",
+      "issue_type": "multiple_missing_fields",
+      "profile_id": "cn-fire-55037-2022",
+      "expected_outcome": "REVIEW",
+      "description": "The exit has no name, fire rating, clear width, or occupant capacity evidence.",
+      "path": "issue-20-multiple-missing-fields.ifc",
+      "door_spec_count": 1
+    }
+  ]
+}

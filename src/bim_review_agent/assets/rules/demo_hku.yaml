@@ -1,0 +1,51 @@
+id: hku-demo-2026
+version: 1.0.0
+title: HKU assessment demonstration rule pack
+
+authority:
+  type: DEMO_PROJECT_RULE
+  source_title: BIM Review Agent demonstration requirements
+  jurisdiction: Demonstration only — not jurisdiction-specific
+  clause: null
+  limitation: >-
+    This configuration demonstrates review mechanics and engineering judgment. It is not an
+    approved Hong Kong statutory clause and cannot certify compliance.
+
+info:
+  id: INFO-001
+  title: Door information evidence
+  category: Information quality
+  version: 1.0.0
+  enabled: true
+  requirements:
+    - key: door-name
+      label: Door name
+      field: name
+      applicability: all_doors
+      source_path: IfcDoor.Name
+      missing_status: REVIEW
+    - key: exit-classification
+      label: Exit classification
+      field: fire_exit
+      applicability: all_doors
+      source_path: Pset_DoorCommon.FireExit
+      missing_status: REVIEW
+    - key: exit-fire-rating
+      label: Exit door fire rating
+      field: fire_rating
+      applicability: confirmed_exit_doors
+      source_path: Pset_DoorCommon.FireRating
+      missing_status: REVIEW
+
+egress:
+  id: EGRESS-001
+  title: Exit door clear width
+  category: Egress
+  version: 1.0.0
+  enabled: true
+  threshold:
+    value: 900
+    unit: mm
+    operator: ">="
+  contradiction_tolerance_mm: 5
+  proxy_policy: review

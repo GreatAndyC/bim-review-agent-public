@@ -1,0 +1,214 @@
+<template id="captions-template" data-composition-id="captions" data-width="1920" data-height="1080">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+
+
+<style data-brand-tokens>
+      :root {
+      --paper: #FFFFFF;
+      --paper-2: #0F766E;
+      --ink: #0F172A;
+      --ink-soft: #1D4ED8;
+      --grid: rgba(29, 78, 216, 0.10);
+      --ink-faint: rgba(29, 78, 216, 0.18);
+      --cap-ink: #0F172A;
+      --cap-canvas: #FFFFFF;
+      --cap-accent: #1D4ED8;
+      --cap-accent-2: #0F766E;
+      --font-display: "Inter", system-ui, serif;
+      --font-body: "Inter", system-ui, sans-serif;
+      --cap-band-top: 900px;
+      --cap-band-height: 180px;
+      }
+    </style>
+
+<style>
+  #captions-root {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .caption-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    pointer-events: none;
+  }
+  /* the keep-out band, from captionBand(H) — frame content stays above it */
+  .caption-stage {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: var(--cap-band-top, 900px);
+    height: var(--cap-band-height, 180px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .caption-group {
+    /* every group is absolutely stacked over the SAME band — exactly one shown at a
+       time via opacity. Must be absolute: in-flow groups would lay out side-by-side. */
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+  }
+
+  /* Plain subtitle treatment: transparent canvas, no card, no grid, no flashing
+     background. The outline keeps white text readable over the product UI. */
+  .caption-pill {
+    position: relative;
+    max-width: 82%;
+    padding: 8px 24px 12px;
+    background: transparent;
+    border: 0;
+  }
+  .caption-line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.1em 0.34em;
+    font-family: "Inter", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: clamp(40px, 4.4vw, 58px);
+    line-height: 1.18;
+    letter-spacing: -0.015em;
+  }
+
+  /* All karaoke states intentionally share one treatment. */
+  .caption-word {
+    display: inline-block;
+    padding: 0 0.06em;
+    color: #ffffff;
+    background: transparent;
+    box-shadow: none;
+    -webkit-text-stroke: 1.5px #070b12;
+    paint-order: stroke fill;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+  }
+  .caption-word.is-active,
+  .caption-word.is-spoken {
+    color: #ffffff;
+    background: transparent;
+    box-shadow: none;
+    -webkit-text-stroke: 1.5px #070b12;
+    paint-order: stroke fill;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+  }
+
+  /* optional per-word accents (dormant until a word-classer tags them) */
+  /* brand / key term — Newsreader italic, cobalt's only display inflection */
+  .caption-word.cap-brand {
+    font-style: italic;
+  }
+  /* numerals / data keep the same white-with-outline treatment */
+  .caption-word.cap-num {
+    font-family: "Inter", system-ui, sans-serif;
+    color: #ffffff;
+  }
+  /* Keep emphasis simple and monochrome. */
+  .caption-word.cap-cta {
+    text-decoration: none;
+  }
+
+  @media (max-aspect-ratio: 9/16) {
+    .caption-pill {
+      max-width: 92%;
+    }
+    .caption-line {
+      font-size: clamp(34px, 5.4vw, 48px);
+    }
+  }
+</style>
+
+<div
+  id="captions-root"
+  data-composition-id="captions"
+  data-timeline-locked
+  data-start="0"
+  data-duration="113"
+  data-fps="30"
+  data-width="1920"
+  data-height="1080"
+>
+  <div class="caption-layer" aria-hidden="true">
+    <div id="caption-stage" class="caption-stage"></div>
+  </div>
+</div>
+
+<script>
+  // captions.mjs injects the engine's scene-aware groups + real duration here.
+  var GROUPS = [{"id":"caption-group-0","frame":1,"start":0.4,"end":3.42,"text":"BIM Agent 用来做 IFC 建筑模型预审，","words":[{"id":"caption-word-0-0","text":"BIM Agent 用来做 IFC 建筑模型预审，","start":0.4,"end":3.3}]},{"id":"caption-group-1","frame":1,"start":3.6,"end":6.22,"text":"今天检查门名称和出口门净宽。","words":[{"id":"caption-word-1-0","text":"今天检查门名称和出口门净宽。","start":3.6,"end":6.1}]},{"id":"caption-group-2","frame":2,"start":9.4,"end":12.32,"text":"进入新建审查，上传 mixed_review.ifc。","words":[{"id":"caption-word-2-0","text":"进入新建审查，上传 mixed_review.ifc。","start":9.4,"end":12.2}]},{"id":"caption-group-3","frame":2,"start":12.5,"end":15.92,"text":"页面显示文件已选择，","words":[{"id":"caption-word-3-0","text":"页面显示文件已选择，","start":12.5,"end":15.8}]},{"id":"caption-group-4","frame":2,"start":16.1,"end":20.32,"text":"并提示同一入口也支持一次选择多个 IFC 文件。","words":[{"id":"caption-word-4-0","text":"并提示同一入口也支持一次选择多个 IFC 文件。","start":16.1,"end":20.2}]},{"id":"caption-group-5","frame":3,"start":21.4,"end":24.42,"text":"下一步选择香港消防安全预审，","words":[{"id":"caption-word-5-0","text":"下一步选择香港消防安全预审，","start":21.4,"end":24.3}]},{"id":"caption-group-6","frame":3,"start":24.6,"end":27.92,"text":"确认两条规则：门信息证据完整性","words":[{"id":"caption-word-6-0","text":"确认两条规则：门信息证据完整性","start":24.6,"end":27.8}]},{"id":"caption-group-7","frame":3,"start":28.1,"end":30.52,"text":"和出口门最小净宽，然后进入运行。","words":[{"id":"caption-word-7-0","text":"和出口门最小净宽，然后进入运行。","start":28.1,"end":30.4}]},{"id":"caption-group-8","frame":4,"start":31.4,"end":33.42,"text":"点击运行审查。","words":[{"id":"caption-word-8-0","text":"点击运行审查。","start":31.4,"end":33.3}]},{"id":"caption-group-9","frame":4,"start":33.6,"end":37.92,"text":"页面实时显示上传、检查模型、运行规则","words":[{"id":"caption-word-9-0","text":"页面实时显示上传、检查模型、运行规则","start":33.6,"end":37.8}]},{"id":"caption-group-10","frame":4,"start":38.1,"end":40.82,"text":"和组装证据四个阶段；完成后直接查看结果。","words":[{"id":"caption-word-10-0","text":"和组装证据四个阶段；完成后直接查看结果。","start":38.1,"end":40.7}]},{"id":"caption-group-11","frame":5,"start":41.4,"end":43.72,"text":"结果总览先给出分流：","words":[{"id":"caption-word-11-0","text":"结果总览先给出分流：","start":41.4,"end":43.6}]},{"id":"caption-group-12","frame":5,"start":43.9,"end":46.62,"text":"十七条发现，十二项通过、","words":[{"id":"caption-word-12-0","text":"十七条发现，十二项通过、","start":43.9,"end":46.5}]},{"id":"caption-group-13","frame":5,"start":46.8,"end":49.22,"text":"一项失败、四项待复核。","words":[{"id":"caption-word-13-0","text":"一项失败、四项待复核。","start":46.8,"end":49.1}]},{"id":"caption-group-14","frame":5,"start":49.4,"end":51.72,"text":"接下来打开需要处理的项目。","words":[{"id":"caption-word-14-0","text":"接下来打开需要处理的项目。","start":49.4,"end":51.6}]},{"id":"caption-group-15","frame":6,"start":52.4,"end":55.12,"text":"结果页可以复制 JSON、复制 Markdown，","words":[{"id":"caption-word-15-0","text":"结果页可以复制 JSON、复制 Markdown，","start":52.4,"end":55}]},{"id":"caption-group-16","frame":6,"start":55.3,"end":57.92,"text":"或打印 PDF，","words":[{"id":"caption-word-16-0","text":"或打印 PDF，","start":55.3,"end":57.8}]},{"id":"caption-group-17","frame":6,"start":58.1,"end":60.52,"text":"审查结论可以直接交给工程师继续处理。","words":[{"id":"caption-word-17-0","text":"审查结论可以直接交给工程师继续处理。","start":58.1,"end":60.4}]},{"id":"caption-group-18","frame":7,"start":61.4,"end":64.22,"text":"名称检查发现，某个 IfcDoor 缺少 IfcDoor.Name，","words":[{"id":"caption-word-18-0","text":"名称检查发现，某个 IfcDoor 缺少 IfcDoor.Name，","start":61.4,"end":64.1}]},{"id":"caption-group-19","frame":7,"start":64.4,"end":66.72,"text":"所以标记为 REVIEW。","words":[{"id":"caption-word-19-0","text":"所以标记为 REVIEW。","start":64.4,"end":66.6}]},{"id":"caption-group-20","frame":7,"start":66.9,"end":69.92,"text":"GlobalId 只用于定位，","words":[{"id":"caption-word-20-0","text":"GlobalId 只用于定位，","start":66.9,"end":69.8}]},{"id":"caption-group-21","frame":7,"start":70.1,"end":71.92,"text":"不能替代门名称。","words":[{"id":"caption-word-21-0","text":"不能替代门名称。","start":70.1,"end":71.8}]},{"id":"caption-group-22","frame":8,"start":72.4,"end":74.92,"text":"宽度检查给出确定性失败：","words":[{"id":"caption-word-22-0","text":"宽度检查给出确定性失败：","start":72.4,"end":74.8}]},{"id":"caption-group-23","frame":8,"start":75.1,"end":77.72,"text":"D-11 的 ClearWidth 是八百二十毫米，","words":[{"id":"caption-word-23-0","text":"D-11 的 ClearWidth 是八百二十毫米，","start":75.1,"end":77.6}]},{"id":"caption-group-24","frame":8,"start":77.9,"end":80.42,"text":"要求至少八百五十，差三十毫米。","words":[{"id":"caption-word-24-0","text":"要求至少八百五十，差三十毫米。","start":77.9,"end":80.3}]},{"id":"caption-group-25","frame":8,"start":80.6,"end":82.92,"text":"OverallWidth 只能作为代理证据。","words":[{"id":"caption-word-25-0","text":"OverallWidth 只能作为代理证据。","start":80.6,"end":82.8}]},{"id":"caption-group-26","frame":9,"start":85.4,"end":88.22,"text":"批量处理时，一次选择多个 IFC。","words":[{"id":"caption-word-26-0","text":"批量处理时，一次选择多个 IFC。","start":85.4,"end":88.1}]},{"id":"caption-group-27","frame":9,"start":88.4,"end":91.62,"text":"这里选了 mixed_review.ifc 和 clean.ifc，","words":[{"id":"caption-word-27-0","text":"这里选了 mixed_review.ifc 和 clean.ifc，","start":88.4,"end":91.5}]},{"id":"caption-group-28","frame":9,"start":91.8,"end":94.12,"text":"分别审查。","words":[{"id":"caption-word-28-0","text":"分别审查。","start":91.8,"end":94}]},{"id":"caption-group-29","frame":10,"start":95.4,"end":98.32,"text":"批量结果页汇总每个文件的发现，","words":[{"id":"caption-word-29-0","text":"批量结果页汇总每个文件的发现，","start":95.4,"end":98.2}]},{"id":"caption-group-30","frame":10,"start":98.5,"end":101.82,"text":"勾选已完成文件，就能一次导出所选 PDF。","words":[{"id":"caption-word-30-0","text":"勾选已完成文件，就能一次导出所选 PDF。","start":98.5,"end":101.7}]},{"id":"caption-group-31","frame":10,"start":102,"end":105.12,"text":"规则配置、样例与数据、历史记录","words":[{"id":"caption-word-31-0","text":"规则配置、样例与数据、历史记录","start":102,"end":105}]},{"id":"caption-group-32","frame":10,"start":105.3,"end":107.72,"text":"也都可以从侧栏进入。","words":[{"id":"caption-word-32-0","text":"也都可以从侧栏进入。","start":105.3,"end":107.6}]},{"id":"caption-group-33","frame":11,"start":108.8,"end":112.52,"text":"以上就是 BIM Agent 网页 Demo 版本的全部内容。","words":[{"id":"caption-word-33-0","text":"以上就是 BIM Agent 网页 Demo 版本的全部内容。","start":108.8,"end":112.4}]}];
+  var DURATION = 113;
+
+  (function () {
+    var stage = document.getElementById("caption-stage");
+
+    // build DOM: one .caption-group per group, .caption-word per word
+    GROUPS.forEach(function (group, g) {
+      var groupEl = document.createElement("div");
+      groupEl.className = "caption-group";
+      groupEl.id = "caption-group-" + g;
+      var pill = document.createElement("div");
+      pill.className = "caption-pill";
+      var line = document.createElement("div");
+      line.className = "caption-line";
+      (group.words || []).forEach(function (w, i) {
+        var span = document.createElement("span");
+        span.className = "caption-word";
+        span.id = "caption-word-" + g + "-" + i;
+        span.textContent = String(w.text);
+        line.appendChild(span);
+      });
+      pill.appendChild(line);
+      groupEl.appendChild(pill);
+      stage.appendChild(groupEl);
+    });
+
+    window.__timelines = window.__timelines || {};
+    var tl = gsap.timeline({ paused: true });
+
+    GROUPS.forEach(function (group, g) {
+      var groupEl = document.getElementById("caption-group-" + g);
+      var words = group.words || [];
+      var next = GROUPS[g + 1];
+      var isLast = g === GROUPS.length - 1;
+      var start = Math.max(0, Number(group.start));
+      var end = isLast ? DURATION : Math.min(Number(next.start), Number(group.end) + 0.3);
+      if (end <= start) end = start + 0.01;
+
+      // group on/off — exactly one group visible at a time
+      tl.set(groupEl, { opacity: 1 }, start);
+      tl.set(groupEl, { opacity: 0 }, end);
+
+      // 3-state karaoke via className SETS — seek-safe (gsap.set applies on the
+      // engine's frame-by-frame seek; .call callbacks would NOT fire).
+      words.forEach(function (w, i) {
+        var el = document.getElementById("caption-word-" + g + "-" + i);
+        var at = Math.max(start, Number(w.start));
+        tl.set(el, { className: "caption-word" }, start); // upcoming (also resets on reverse-seek)
+        tl.set(el, { className: "caption-word is-active" }, at); // current
+        tl.fromTo(el, { scale: 0.985 }, { scale: 1, duration: 0.1, ease: "power3.out" }, at);
+        if (i + 1 < words.length) {
+          var nextAt = Math.max(start, Number(words[i + 1].start));
+          tl.set(el, { className: "caption-word is-spoken" }, nextAt); // demote when next activates
+        }
+      });
+      if (words.length) {
+        var lastEl = document.getElementById("caption-word-" + g + "-" + (words.length - 1));
+        var lastSpoken = Math.min(end, Number(words[words.length - 1].end) + 0.1);
+        tl.set(lastEl, { className: "caption-word is-spoken" }, lastSpoken);
+      }
+    });
+
+    // full-span anchor so the sub-comp timeline spans the whole video
+    tl.to({}, { duration: DURATION }, 0);
+    window.__timelines["captions"] = tl;
+  })();
+</script>
+
+<style>
+  .caption-line { line-height: 1.1 !important; }
+</style>
+</template>

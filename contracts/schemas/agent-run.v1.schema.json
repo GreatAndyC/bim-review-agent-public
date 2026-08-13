@@ -1,0 +1,314 @@
+{
+  "$defs": {
+    "AgentEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "actor": {
+          "title": "Actor",
+          "type": "string"
+        },
+        "data": {
+          "additionalProperties": true,
+          "title": "Data",
+          "type": "object"
+        },
+        "event_id": {
+          "title": "Event Id",
+          "type": "string"
+        },
+        "occurred_at": {
+          "format": "date-time",
+          "title": "Occurred At",
+          "type": "string"
+        },
+        "sequence": {
+          "minimum": 1,
+          "title": "Sequence",
+          "type": "integer"
+        },
+        "summary": {
+          "title": "Summary",
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/AgentEventType"
+        }
+      },
+      "required": [
+        "event_id",
+        "sequence",
+        "occurred_at",
+        "type",
+        "actor",
+        "summary"
+      ],
+      "title": "AgentEvent",
+      "type": "object"
+    },
+    "AgentEventType": {
+      "enum": [
+        "run.started",
+        "session.selected",
+        "memory.recalled",
+        "episode.recalled",
+        "provider.selected",
+        "connector.selected",
+        "tool.discovered",
+        "provider.requested",
+        "tool.requested",
+        "tool.completed",
+        "tool.failed",
+        "agent.delegated",
+        "agent.completed",
+        "agent.failed",
+        "run.completed",
+        "run.failed",
+        "run.budget_exhausted"
+      ],
+      "title": "AgentEventType",
+      "type": "string"
+    },
+    "AgentFinalResponse": {
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "additionalProperties": true,
+          "title": "Data",
+          "type": "object"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        }
+      },
+      "required": [
+        "message"
+      ],
+      "title": "AgentFinalResponse",
+      "type": "object"
+    },
+    "AgentRunState": {
+      "enum": [
+        "CREATED",
+        "RUNNING",
+        "COMPLETED",
+        "FAILED",
+        "BUDGET_EXHAUSTED",
+        "CANCELLED"
+      ],
+      "title": "AgentRunState",
+      "type": "string"
+    },
+    "AgentStopReason": {
+      "enum": [
+        "FINAL_OUTPUT",
+        "STEP_BUDGET_EXHAUSTED",
+        "TOOL_BUDGET_EXHAUSTED",
+        "PROVIDER_ERROR",
+        "INVALID_PROVIDER_ACTION",
+        "TOOL_NOT_ALLOWED",
+        "TOOL_NOT_FOUND",
+        "TOOL_INPUT_INVALID",
+        "TOOL_OUTPUT_INVALID",
+        "TOOL_EXECUTION_FAILED",
+        "DELEGATION_BUDGET_EXHAUSTED",
+        "DELEGATION_UNAVAILABLE",
+        "SPECIALIST_NOT_ALLOWED",
+        "SPECIALIST_NOT_FOUND",
+        "SPECIALIST_EXECUTION_FAILED",
+        "INVALID_SPECIALIST_RESULT"
+      ],
+      "title": "AgentStopReason",
+      "type": "string"
+    }
+  },
+  "$id": "urn:bim-review-agent:agent-run:v1",
+  "additionalProperties": false,
+  "properties": {
+    "agent_id": {
+      "title": "Agent Id",
+      "type": "string"
+    },
+    "agent_version": {
+      "title": "Agent Version",
+      "type": "string"
+    },
+    "completed_at": {
+      "format": "date-time",
+      "title": "Completed At",
+      "type": "string"
+    },
+    "connector_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Connector Ids",
+      "type": "array"
+    },
+    "delegated_run_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Delegated Run Ids",
+      "type": "array"
+    },
+    "delegation_count": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Delegation Count",
+      "type": "integer"
+    },
+    "duration_ms": {
+      "minimum": 0,
+      "title": "Duration Ms",
+      "type": "integer"
+    },
+    "episode_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Episode Id"
+    },
+    "episode_read_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Episode Read Ids",
+      "type": "array"
+    },
+    "events": {
+      "items": {
+        "$ref": "#/$defs/AgentEvent"
+      },
+      "title": "Events",
+      "type": "array"
+    },
+    "final_response": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AgentFinalResponse"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "linked_review_run_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Linked Review Run Id"
+    },
+    "max_delegations": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Max Delegations",
+      "type": "integer"
+    },
+    "max_parallel_children": {
+      "default": 1,
+      "minimum": 1,
+      "title": "Max Parallel Children",
+      "type": "integer"
+    },
+    "max_steps": {
+      "minimum": 1,
+      "title": "Max Steps",
+      "type": "integer"
+    },
+    "max_tool_calls": {
+      "minimum": 0,
+      "title": "Max Tool Calls",
+      "type": "integer"
+    },
+    "memory_read_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Memory Read Ids",
+      "type": "array"
+    },
+    "model_id": {
+      "title": "Model Id",
+      "type": "string"
+    },
+    "objective": {
+      "title": "Objective",
+      "type": "string"
+    },
+    "provider_id": {
+      "title": "Provider Id",
+      "type": "string"
+    },
+    "run_id": {
+      "title": "Run Id",
+      "type": "string"
+    },
+    "session_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Session Id"
+    },
+    "started_at": {
+      "format": "date-time",
+      "title": "Started At",
+      "type": "string"
+    },
+    "state": {
+      "$ref": "#/$defs/AgentRunState"
+    },
+    "step_count": {
+      "minimum": 0,
+      "title": "Step Count",
+      "type": "integer"
+    },
+    "stop_reason": {
+      "$ref": "#/$defs/AgentStopReason"
+    },
+    "tool_call_count": {
+      "minimum": 0,
+      "title": "Tool Call Count",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "run_id",
+    "objective",
+    "agent_id",
+    "agent_version",
+    "provider_id",
+    "model_id",
+    "state",
+    "stop_reason",
+    "started_at",
+    "completed_at",
+    "duration_ms",
+    "step_count",
+    "tool_call_count",
+    "max_steps",
+    "max_tool_calls",
+    "events"
+  ],
+  "title": "AgentRun",
+  "type": "object"
+}
