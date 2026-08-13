@@ -2,6 +2,8 @@
 
 The assessment asks for code and prompts. These prompt contracts are checked in as a deliberate downstream boundary, but the runnable MVP does **not** call an external language model.
 
+For the complete chronological development record, see the [redacted prompt history](../docs/PROMPT_HISTORY.md). It preserves the full prompt timeline while removing personal contact details, external URLs, and local paths from the public copy.
+
 | Prompt | Purpose | Verdict authority |
 |---|---|---|
 | [`explain-finding.md`](explain-finding.md) | Explain one completed finding in plain language | None |

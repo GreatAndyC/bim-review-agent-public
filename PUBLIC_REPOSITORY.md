@@ -2,11 +2,13 @@
 
 This repository is the public, review-ready snapshot of BIM Review Agent.
 It intentionally contains the product source, deterministic rules, public prompts,
-generated IFC fixtures, current UI evidence, and reproducible video source.
+the complete redacted prompt history, generated IFC fixtures, current UI evidence,
+and reproducible video source.
 
 ## Deliberate exclusions
 
 - No recipient email, private delivery URL, browser session data, or API key.
+- Prompt history is complete but redacted for personal contact details, external URLs, and local paths.
 - No Git history from the internal development repository.
 - No third-party real-building IFC corpus with unclear redistribution terms.
 - No original building-standard PDFs or complete OCR reproductions.

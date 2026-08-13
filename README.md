@@ -4,7 +4,7 @@
 
 **证据优先的 IFC 建筑模型预审工具：在交接前发现门信息和疏散净宽问题。**
 
-[![CI](https://github.com/GreatAndyC/bim-review-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/GreatAndyC/bim-review-agent/actions/workflows/ci.yml)
+[![CI](https://github.com/GreatAndyC/bim-review-agent-public/actions/workflows/ci.yml/badge.svg)](https://github.com/GreatAndyC/bim-review-agent-public/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 [简体中文](README.md) · [English](README.en.md)
@@ -177,6 +177,7 @@ Site 测试会构建 Worker，检查 SSR/渲染界面，验证上传边界，比
 - [安全与隐私边界](SECURITY.md)
 - [公开仓库边界](PUBLIC_REPOSITORY.md)
 - [公开提示词与 Agent 约束](prompts/README.md)
+- [完整 Prompt 历史（已脱敏）](docs/PROMPT_HISTORY.md)
 - [当前演示脚本与提交清单](docs/demo/DEMO_SCRIPT.md)
 - [当前视频 QA 报告](docs/demo/VIDEO_QA_REPORT_2026-08-13.md)
 

@@ -4,7 +4,7 @@
 
 **Evidence-first IFC review for catching door-information and egress-width issues before handoff.**
 
-[![CI](https://github.com/GreatAndyC/bim-review-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/GreatAndyC/bim-review-agent/actions/workflows/ci.yml)
+[![CI](https://github.com/GreatAndyC/bim-review-agent-public/actions/workflows/ci.yml/badge.svg)](https://github.com/GreatAndyC/bim-review-agent-public/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 [简体中文](README.md) · [English](README.en.md)
@@ -178,6 +178,7 @@ The original assignment brief asked for a runnable Web prototype or Agent that a
 - [Security and privacy boundary](SECURITY.md)
 - [Public repository boundary](PUBLIC_REPOSITORY.md)
 - [Public prompts and Agent constraints](prompts/README.md)
+- [Complete prompt history (redacted)](docs/PROMPT_HISTORY.md)
 - [Demo script and submission checklist](docs/demo/DEMO_SCRIPT.md)
 
 ## Security and responsible use
