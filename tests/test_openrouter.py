@@ -211,7 +211,9 @@ def test_chat_adapter_translates_tool_calls_and_applies_privacy_routing(
     assert action.arguments == {"include_entity_counts": True}
     assert capture["url"] == "https://openrouter.example/api/v1/chat/completions"
     assert capture["headers"]["Authorization"] == f"Bearer {TEST_CREDENTIAL}"
-    assert capture["headers"]["HTTP-Referer"].endswith("/bim-review-agent")
+    assert capture["headers"]["HTTP-Referer"] == (
+        "https://github.com/GreatAndyC/bim-review-agent-public"
+    )
     assert capture["headers"]["X-OpenRouter-Title"] == "BIM Review Agent"
     assert capture["payload"]["model"] == "vendor/tool-model"
     assert capture["payload"]["tool_choice"] == "required"
@@ -223,6 +225,51 @@ def test_chat_adapter_translates_tool_calls_and_applies_privacy_routing(
     }
     assert TEST_CREDENTIAL not in json.dumps(capture["payload"])
     assert capture["timeout"] == 12
+
+
+@pytest.mark.parametrize(
+    ("response", "message"),
+    [
+        ({"choices": "not-a-list"}, "no completion choice"),
+        ({"choices": []}, "no completion choice"),
+        ({"choices": [{}]}, "no assistant message"),
+        ({"choices": [{"message": "not-an-object"}]}, "no assistant message"),
+        (
+            {"choices": [{"message": {"tool_calls": "not-a-list"}}]},
+            "no structured Agent action",
+        ),
+        ({"choices": [{"message": {"tool_calls": [None]}}]}, "invalid tool-call object"),
+        (
+            {"choices": [{"message": {"tool_calls": [{"function": "not-an-object"}]}}]},
+            "invalid function object",
+        ),
+        (
+            {
+                "choices": [
+                    {
+                        "message": {
+                            "tool_calls": [{"function": {"name": "inspect_model", "arguments": {}}}]
+                        }
+                    }
+                ]
+            },
+            "invalid function call",
+        ),
+    ],
+)
+def test_chat_adapter_rejects_malformed_provider_responses(
+    monkeypatch: pytest.MonkeyPatch,
+    response: dict[str, Any],
+    message: str,
+) -> None:
+    monkeypatch.setenv("BIM_REVIEW_OPENROUTER_API_KEY", TEST_CREDENTIAL)
+    provider = OpenRouterChatProvider(
+        model_id="vendor/tool-model",
+        transport=lambda _url, _headers, _payload, _timeout: response,
+    )
+
+    with pytest.raises(ProviderError, match=message):
+        provider.next_action(_request())
 
 
 def test_chat_adapter_sends_only_the_redacted_episode_contract(
